@@ -1,1 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lance Sanchez – Data engineer portfolio</title>
+<meta name="description" content="Data engineer who designs SQL schemas and builds AWS pipelines: Kafka in, clean Postgres and Redshift tables out.">
+<meta property="og:title" content="Lance Sanchez – Data engineer">
+<meta property="og:description" content="Data engineer who designs SQL schemas and builds AWS pipelines.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1117'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%232dd4bf'%3El.s%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;
+  --surface:#161b22;
+  --border:#30363d;
+  --text:#e6edf3;
+  --muted:#9aa4b2;
+  --accent:#2dd4bf;
+  --on-accent:#04201c;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3,p{margin:0}
 
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:40px;padding-right:40px}
+section{padding-top:64px;padding-bottom:64px}
+
+/* nav */
+.nav{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:24px;padding-bottom:24px}
+.logo{font-family:var(--mono);font-size:15px;font-weight:700;color:var(--text)}
+.logo:hover{text-decoration:none}
+.logo span{color:var(--accent)}
+.nav nav{display:flex;flex-wrap:wrap;gap:24px;font-size:14px}
+.nav nav a{color:var(--muted)}
+.nav nav a:hover{color:var(--text);text-decoration:none}
+
+/* hero */
+.hero{padding-top:96px;padding-bottom:80px;display:flex;flex-direction:column;gap:24px}
+.prompt{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.hero h1{font-size:60px;line-height:1.05;font-weight:700;letter-spacing:-0.02em;max-width:820px}
+.hero p{font-size:19px;line-height:1.6;color:var(--muted);max-width:640px}
+.actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}
+.btn{display:inline-block;padding:14px 24px;border:1px solid var(--border);color:var(--text);font-weight:500;font-size:15px;border-radius:8px;transition:border-color .15s}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+
+/* section heads */
+.head{display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent)}
+h2{font-size:34px;letter-spacing:-0.01em}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:16px}
+.card.featured{gap:24px}
+.card-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline}
+.card h3{font-size:22px}
+.card.featured h3{font-size:24px}
+.card p{font-size:15px;line-height:1.6;color:var(--muted)}
+.card.featured p{font-size:16px;max-width:760px}
+.tags{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.links{display:flex;gap:24px;font-size:14px}
+.grid{display:flex;flex-wrap:wrap;gap:24px;margin-top:24px}
+.grid .card{flex:1 1 360px;min-width:0}
+
+/* architecture strip */
+.flow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;font-family:var(--mono);font-size:13px;list-style:none;margin:0;padding:0}
+.flow li{display:flex;align-items:center;gap:12px}
+.flow li:not(:last-child)::after{content:"→";color:var(--accent)}
+.flow .step{padding:12px 16px;border:1px solid var(--border);border-radius:8px;background:var(--bg)}
+.flow li:last-child .step{border-color:var(--accent);color:var(--accent)}
+.status{font-family:var(--mono);font-size:12px;color:var(--accent)}
+
+/* skills */
+.skills{display:flex;flex-wrap:wrap;gap:24px}
+.skill-group{flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.skill-group h3{font-size:14px;font-weight:600}
+.pills{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:13px;list-style:none;margin:0;padding:0}
+.pills li{padding:6px 12px;border:1px solid var(--border);border-radius:999px}
+
+/* experience */
+.job{border-left:1px solid var(--border);padding-left:24px;display:flex;flex-direction:column;gap:12px;max-width:760px}
+.job-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline}
+.job h3{font-size:18px}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.job p,.job li{font-size:15px;line-height:1.6;color:var(--muted)}
+.job ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+.jobs{display:flex;flex-direction:column;gap:48px}
+
+/* contact */
+#contact{padding-bottom:96px}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:40px;display:flex;flex-direction:column;gap:16px}
+.contact-card p{font-size:16px;line-height:1.6;color:var(--muted);max-width:560px}
+.contact-links{display:flex;flex-wrap:wrap;gap:24px;font-size:15px}
+
+@media (max-width:720px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .hero{padding-top:56px;padding-bottom:48px}
+  .hero h1{font-size:38px}
+  .hero p{font-size:17px}
+  section{padding-top:48px;padding-bottom:48px}
+  h2{font-size:28px}
+  .card{padding:24px}
+  .contact-card{padding:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="logo" href="#">lance<span>.</span>sanchez</a>
+  <nav aria-label="Main">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<div class="wrap hero">
+  <div class="prompt" aria-hidden="true">$ whoami</div>
+  <h1>Data engineer who turns messy sources into trusted tables.</h1>
+  <p>I design SQL schemas and build pipelines on AWS: Kafka in, clean Postgres and Redshift tables out.</p>
+  <div class="actions">
+    <a class="btn primary" href="#projects">See my projects</a>
+    <a class="btn" href="Lance_Sanchez.pdf">Resume</a>
+    <a class="btn" href="https://github.com/LanceSanchez" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/lance-sanchez-a732a01a2/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+
+<section id="projects" class="wrap">
+  <div class="head">
+    <div class="eyebrow">01 / projects</div>
+    <h2>Projects in progress</h2>
+  </div>
+
+  <article class="card featured">
+    <div class="card-top">
+      <h3>Streaming pipeline: Kafka to curated tables</h3>
+      <span class="tags">Python · Kafka · S3 · Postgres</span>
+    </div>
+    <p>Synthetic events stream into Kafka, land as raw JSON on S3, get cleaned and aggregated in stage and curated layers, then load into a warehouse table with data quality checks at each hop.</p>
+    <ol class="flow" aria-label="Pipeline stages">
+      <li><span class="step">Event generator</span></li>
+      <li><span class="step">Kafka</span></li>
+      <li><span class="step">S3 raw</span></li>
+      <li><span class="step">Stage</span></li>
+      <li><span class="step">Curated</span></li>
+      <li><span class="step">Postgres / Redshift</span></li>
+    </ol>
+    <span class="status">In progress. Repo and write-up coming soon.</span>
+  </article>
+
+  <div class="grid">
+    <article class="card">
+      <span class="tags">SQL · PostgreSQL</span>
+      <h3>SQL showcase</h3>
+      <p>A clean schema on a public dataset, with window-function and CTE queries, plus an EXPLAIN comparison before and after adding an index.</p>
+      <span class="status">In progress. Repo coming soon.</span>
+    </article>
+    <article class="card">
+      <span class="tags">Case study</span>
+      <h3>Migrating queries to a unified schema</h3>
+      <p>How three differently shaped source systems were mapped to one PostgreSQL schema, and what I learned along the way. No employer data.</p>
+      <span class="status">In progress. Write-up coming soon.</span>
+    </article>
+  </div>
+</section>
+
+<section id="skills" class="wrap">
+  <div class="head">
+    <div class="eyebrow">02 / skills</div>
+    <h2>Tools I work with</h2>
+  </div>
+  <div class="skills">
+    <div class="skill-group">
+      <h3>Languages</h3>
+      <ul class="pills"><li>SQL</li><li>Python</li><li>PySpark</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Data stores</h3>
+      <ul class="pills"><li>PostgreSQL</li><li>MySQL</li><li>Redshift</li><li>S3</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Pipelines and cloud</h3>
+      <ul class="pills"><li>AWS Glue</li><li>Step Functions</li><li>Lambda</li><li>Terraform</li><li>Kafka</li><li>Docker</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="wrap">
+  <div class="head">
+    <div class="eyebrow">03 / experience</div>
+    <h2>Where I have worked</h2>
+  </div>
+  <div class="jobs">
+    <div class="job">
+      <div class="job-top">
+        <h3>Data Engineer, Jarvis Analytics (Henry Schein One)</h3>
+        <span class="when">Nov 2024 – Present</span>
+      </div>
+      <p>Maintain and improve production data pipelines on AWS for a healthcare analytics platform.</p>
+      <ul>
+        <li>Optimized AWS Glue (PySpark) and Step Functions pipelines for incremental warehouse loads into Redshift, improving raw-to-staging performance and reliability.</li>
+        <li>Extended orchestration across Step Functions, Lambda, S3 and Redshift COPY, adding watermark-based incremental processing and concurrency guards.</li>
+        <li>Contributed to migrating MySQL report queries to a unified PostgreSQL schema across multiple source systems, and built automated validation (template rendering, syntax parsing, column-parity checks).</li>
+        <li>Maintained multi-environment infrastructure in Terraform/OpenTofu for EventBridge schedules, deployed through GitLab CI with OIDC.</li>
+        <li>Added pytest coverage for Glue, Step Functions and Lambda logic, and documented the unified query package for analytics users.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-top">
+        <h3>SQL Developer, Jarvis Analytics (Henry Schein One)</h3>
+        <span class="when">Aug 2020 – Oct 2024</span>
+      </div>
+      <p>Developed and optimized MySQL queries and reports for a healthcare analytics platform.</p>
+      <ul>
+        <li>Wrote and tuned complex SQL (joins, aggregations, indexing) for reporting and analytics, reducing slow-running reports.</li>
+        <li>Rebuilt legacy reports from the underlying database when documentation was missing, matching the original output.</li>
+        <li>Supported multiple customer data sources and troubleshot data discrepancies in report results.</li>
+        <li>Built and maintained internal tools in Python.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap">
+  <div class="contact-card">
+    <div class="eyebrow">04 / contact</div>
+    <h2>Let's talk data.</h2>
+    <p>Open to data engineering and SQL engineering roles. The best way to reach me is LinkedIn or email.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/lance-sanchez-a732a01a2/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/LanceSanchez" target="_blank" rel="noopener">GitHub</a>
+      <a href="Lance_Sanchez.pdf">Resume</a>
+      <a href="mailto:lancesanchez16@gmail.com">lancesanchez16@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
